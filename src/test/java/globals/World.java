@@ -1,6 +1,5 @@
 package globals;
 
-import dataentities.Customer;
 import io.cucumber.java.Scenario;
 import lombok.Data;
 import org.openqa.selenium.WebDriver;
@@ -27,10 +26,4 @@ public class World {
    * Test-related configuration
    */
   public Scenario scenario;
-
-  /******************************
-   * Data-related configuration
-   */
-
-  public Customer customer;
 }

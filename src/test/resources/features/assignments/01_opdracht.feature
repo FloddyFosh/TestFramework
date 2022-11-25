@@ -20,11 +20,6 @@ Feature: 01 Test
     Then the MacBook Pro is added to the cart
 
   #Risk - Customers can't process an order successfully
-  Scenario: 04 assignment - Customer processes an order successfully
-    Given the homepage is loaded
-    And the customer adds a phone Iphone 6 32gb to its cart
-    When the customer places an order
-    Then the order is processed successfully
 
   #Opdracht 5: Verwerk de klant gegevens in een object
 
