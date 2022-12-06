@@ -29,3 +29,10 @@ Feature: 01 Test
     And the Wiremockstub 1 is started
     When you ask Jochem an open question
     Then the Wiremock server is stopped
+
+  Scenario: 07 assignment - Ask Jochem about the weather for today and tomorrow
+    Given the Wiremock server is started
+    And the Wiremockstub 2 is started
+    When you ask Jochem about the weather for today
+    When you ask Jochem about the weather for yesterday
+    Then the Wiremock server is stopped

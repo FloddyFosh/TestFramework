@@ -19,6 +19,12 @@ public class WiremockSteps {
         new WiremockHelper().setupStub1();
     }
 
+    @Given("^the Wiremockstub 2 is started")
+    public void startStub2() {
+
+        new WiremockHelper().setupStub2();
+    }
+
     @Then("^the Wiremock server is stopped")
     public void stopWiremockServer() {
 
