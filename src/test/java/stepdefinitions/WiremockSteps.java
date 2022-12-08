@@ -1,8 +1,10 @@
 package stepdefinitions;
 
+import helpers.ApiHelper;
 import helpers.WiremockHelper;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class WiremockSteps {
 
@@ -30,5 +32,11 @@ public class WiremockSteps {
 
         new WiremockHelper()
             .stopWireMockServer();
+    }
+
+    @When("you ask Jochem about the weather for {string}")
+    public void youAskJochemAboutTheWeatherForToday(String day) {
+        ApiHelper
+                .askJochemWeather(day);
     }
 }

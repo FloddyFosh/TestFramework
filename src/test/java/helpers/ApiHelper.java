@@ -18,6 +18,17 @@ public class ApiHelper {
             .statusCode(200);
     }
 
+    public static void askJochemWeather(String day) {
+        given().log().all().and()
+                .spec(getRequestSpecification())
+                .param("search_term", day)
+                .when()
+                .get("/askJochem/weather")
+                .then().log().all().and()
+                .assertThat()
+                .statusCode(200);
+    }
+
     private static RequestSpecification getRequestSpecification() {
 
         return new RequestSpecBuilder()
