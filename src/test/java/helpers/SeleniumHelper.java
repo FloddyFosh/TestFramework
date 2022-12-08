@@ -12,14 +12,29 @@ import java.time.Duration;
 import java.util.ArrayList;
 
 import static globals.World.browser;
+import static globals.World.jsExecutor;
 
 public class SeleniumHelper {
 
   // Browser functions
 
   public static void navigateToPage(String urlToNavigateTo) {
-
     browser.navigate().to(urlToNavigateTo);
+  }
+
+  public static boolean waitForPageToBeLoaded() {
+    return waitForDOMToBeLoaded(Globals.DEFAULT_UI_TIMEOUT);
+  }
+
+  public static boolean waitForDOMToBeLoaded(int timeout) {
+    try {
+      new WebDriverWait(browser, Duration.ofSeconds(timeout))
+              .until(browser -> jsExecutor.executeScript("return document.readyState").equals("complete"));
+
+      return true;
+    } catch (TimeoutException ex) {
+      return false;
+    }
   }
 
   public static boolean waitForUrlToBe(String expectedUrl) {

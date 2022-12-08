@@ -2,6 +2,7 @@ package globals;
 
 import io.cucumber.java.Scenario;
 import lombok.Data;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 /******************************
@@ -20,6 +21,8 @@ public class World {
    * Browser variables
    */
   public static WebDriver browser;
+
+  public static JavascriptExecutor jsExecutor;
   public String runnerLocation;
 
   /******************************

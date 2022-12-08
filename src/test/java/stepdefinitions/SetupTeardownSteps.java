@@ -10,6 +10,7 @@ import io.restassured.RestAssured;
 import java.net.MalformedURLException;
 import java.net.URL;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -58,7 +59,7 @@ public class SetupTeardownSteps {
                 chromeOptions.addArguments("--disable-blink-features=\"BlockCredentialedSubresources\"");
 
                 //Get beta Chrome
-                chromeOptions.setBinary("C:/Program Files/Google/Chrome Beta/Application/chrome.exe");
+//                chromeOptions.setBinary("C:/Program Files/Google/Chrome Beta/Application/chrome.exe");
 
                 World.browser = new ChromeDriver(chromeOptions);
             }
@@ -93,6 +94,8 @@ public class SetupTeardownSteps {
         }
 
         World.browser.manage().window().maximize();
+
+        World.jsExecutor = (JavascriptExecutor) World.browser;
     }
 
     private void initRestAssured() {
