@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import dataobjects.Customer;
 import dataobjects.Product;
 import helpers.ApiHelper;
 import helpers.SeleniumHelper;
@@ -12,7 +13,12 @@ import org.junit.Assert;
 import pages.CartPage;
 import pages.HomePage;
 
+import java.math.BigDecimal;
+
 public class HomepageSteps {
+
+    private Customer customer;
+
     @ParameterType(".*")
     public Product.categoryEnum product(String pCategory) {
         return Product.categoryEnum.valueOf(pCategory.toUpperCase());
@@ -42,6 +48,15 @@ public class HomepageSteps {
                 .clickOKAlert();
     }
 
+    @When("the customer places an order")
+    public void theCustomerPlacesAnOrder() {
+        customer = new Customer("Chris Bakker", "Nederland", "Hoofddorp", "1234 5678 9012 3456", "01", "22");
+
+        new CartPage().
+                load().
+                placeOrder(customer);
+    }
+
     // ------------------------------------------------------------------------------------------------------
     // 'Then' step definitions
 
@@ -53,11 +68,20 @@ public class HomepageSteps {
                 .load()
                 .navigateToCartPage();
 
-        Assert.assertTrue("Product " + prod.getName() + " was not shown as added to the cart.", new CartPage().productInCart(prod));
+        Assert.assertTrue("Product " + prod.getName() + " was not shown as added to the cart.", new CartPage().productIsInCart(prod));
     }
 
     @Then("the total order sums to {int} euro")
     public void theTotalOrderSumsToEuro(int amount) {
+        new HomePage()
+                .load()
+                .navigateToCartPage();
+
+        Assert.assertEquals(String.format("Total order does not sum to %s.", amount), new CartPage().getTotalOrderSumShown().intValueExact(), amount);
     }
 
+    @Then("the order is processed successfully")
+    public void theOrderIsProcessedSuccessfully() {
+        Assert.assertTrue("The order is not processed successfully.", new CartPage().orderIsSuccessfull(customer));
+    }
 }
