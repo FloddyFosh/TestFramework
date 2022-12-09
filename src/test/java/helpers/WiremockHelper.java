@@ -1,9 +1,8 @@
 package helpers;
 
-import com.github.tomakehurst.wiremock.WireMockServer;
-
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
+
+import com.github.tomakehurst.wiremock.WireMockServer;
 
 public class WiremockHelper {
 

@@ -13,15 +13,13 @@ import org.junit.Assert;
 import pages.CartPage;
 import pages.HomePage;
 
-import java.math.BigDecimal;
-
 public class HomepageSteps {
 
     private Customer customer;
 
     @ParameterType(".*")
-    public Product.CategoryEnum product(String pCategory) {
-        return Product.CategoryEnum.valueOf(pCategory.toUpperCase());
+    public Product.CategoryEnum product(String pcategory) {
+        return Product.CategoryEnum.valueOf(pcategory.toUpperCase());
     }
 
     // ------------------------------------------------------------------------------------------------------
@@ -31,14 +29,15 @@ public class HomepageSteps {
         new HomePage()
                 .load();
 
-        Assert.assertTrue("Homepage " + new HomePage().base_url + " was not loaded.", new HomePage().homePageIsLoaded());
+        Assert.assertTrue("Homepage " + new HomePage().baseUrl + " was not loaded.",
+                new HomePage().homePageIsLoaded());
     }
 
     // ------------------------------------------------------------------------------------------------------
     // 'When'/'And' step definitions
 
     @When("the customer adds a {product} {string} to its cart")
-    public void theCustomerAddsAProductToCart(Product.categoryEnum productCategory, String productName) {
+    public void theCustomerAddsProductToCart(Product.CategoryEnum productCategory, String productName) {
         Product prod = new Product(productName, productCategory);
 
         new HomePage()
@@ -51,9 +50,9 @@ public class HomepageSteps {
     public void theCustomerPlacesAnOrder() {
         customer = new Customer("Chris Bakker", "Nederland", "Hoofddorp", "1234 5678 9012 3456", "01", "22");
 
-        new CartPage().
-                load().
-                placeOrder(customer);
+        new CartPage()
+                .load()
+                .placeOrder(customer);
     }
 
     // ------------------------------------------------------------------------------------------------------
@@ -67,7 +66,8 @@ public class HomepageSteps {
                 .load()
                 .navigateToCartPage();
 
-        Assert.assertTrue(String.format("Product %s was not shown as added to the cart.", prod.getName()), new CartPage().productIsInCart(prod));
+        Assert.assertTrue(String.format("Product %s was not shown as added to the cart.",
+                prod.getName()), new CartPage().productIsInCart(prod));
     }
 
     @Then("the total order sums to {int} euro")
@@ -76,11 +76,13 @@ public class HomepageSteps {
                 .load()
                 .navigateToCartPage();
 
-        Assert.assertEquals(String.format("Total order does not sum to %s.", amount), new CartPage().getTotalOrderSumShown().intValueExact(), amount);
+        Assert.assertEquals(String.format("Total order does not sum to %s.",
+                amount), new CartPage().getTotalOrderSumShown().intValueExact(), amount);
     }
 
     @Then("the order is processed successfully")
     public void theOrderIsProcessedSuccessfully() {
-        Assert.assertTrue("The order is not processed successfully.", new CartPage().orderIsSuccessfull(customer));
+        Assert.assertTrue("The order is not processed successfully.",
+                new CartPage().orderIsSuccessfull(customer));
     }
 }

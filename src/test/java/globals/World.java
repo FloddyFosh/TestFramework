@@ -17,16 +17,16 @@ import org.openqa.selenium.WebDriver;
 @Data
 public class World {
 
-  /******************************
-   * Browser variables
-   */
-  public static WebDriver browser;
+    /******************************
+     * Browser variables
+     */
+    public static WebDriver browser;
 
-  public static JavascriptExecutor jsExecutor;
-  public String runnerLocation;
+    public static JavascriptExecutor jsExecutor;
+    public String runnerLocation;
 
-  /******************************
-   * Test-related configuration
-   */
-  public Scenario scenario;
+    /******************************
+     * Test-related configuration
+     */
+    public Scenario scenario;
 }

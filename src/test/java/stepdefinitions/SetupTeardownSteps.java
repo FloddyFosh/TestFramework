@@ -59,7 +59,7 @@ public class SetupTeardownSteps {
                 chromeOptions.addArguments("--disable-blink-features=\"BlockCredentialedSubresources\"");
 
                 //Get beta Chrome
-//                chromeOptions.setBinary("C:/Program Files/Google/Chrome Beta/Application/chrome.exe");
+                //chromeOptions.setBinary("C:/Program Files/Google/Chrome Beta/Application/chrome.exe");
 
                 World.browser = new ChromeDriver(chromeOptions);
             }

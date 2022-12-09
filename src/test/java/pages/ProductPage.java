@@ -5,11 +5,12 @@ import org.openqa.selenium.By;
 
 public class ProductPage {
 
-    public final String base_url = "https://www.demoblaze.com/prod.html";
-    private final By addToCartButton = By.xpath("//a[contains(@class, 'btn') and contains(normalize-space(), 'Add to cart')]");
+    public final String baseUrl = "https://www.demoblaze.com/prod.html";
+    private final By addToCartButton = By.xpath(
+            "//a[contains(@class, 'btn') and contains(normalize-space(), 'Add to cart')]");
 
-    public ProductPage load(int productID) {
-        SeleniumHelper.navigateToPage(base_url + "?idp_=" + productID);
+    public ProductPage load(int productId) {
+        SeleniumHelper.navigateToPage(baseUrl + "?idp_=" + productId);
         return this;
     }
 

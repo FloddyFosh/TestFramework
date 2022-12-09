@@ -9,6 +9,7 @@
     <name>HC Automation</name>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.15</java.version>
         <junit.version>4.12</junit.version>
         <cucumber.version>7.2.3</cucumber.version>
@@ -180,7 +181,6 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven.compiler.version}</version>
                 <configuration>
-                    <encoding>UTF-8</encoding>
                     <source>14</source>
                     <target>14</target>
                     <compilerArgument>-Werror</compilerArgument>
@@ -201,7 +201,6 @@
                 <configuration>
                     <configLocation>src/checkstyle/java_rules.xml</configLocation>
                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                    <encoding>UTF-8</encoding>
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>true</failsOnError>
                     <linkXRef>false</linkXRef>
