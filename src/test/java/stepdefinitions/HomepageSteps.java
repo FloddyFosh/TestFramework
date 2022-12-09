@@ -20,8 +20,8 @@ public class HomepageSteps {
     private Customer customer;
 
     @ParameterType(".*")
-    public Product.categoryEnum product(String pCategory) {
-        return Product.categoryEnum.valueOf(pCategory.toUpperCase());
+    public Product.CategoryEnum product(String pCategory) {
+        return Product.CategoryEnum.valueOf(pCategory.toUpperCase());
     }
 
     // ------------------------------------------------------------------------------------------------------
@@ -44,8 +44,7 @@ public class HomepageSteps {
         new HomePage()
                 .load()
                 .navigateToProductPage(prod)
-                .clickAddToCart()
-                .clickOKAlert();
+                .addProductsToCart();
     }
 
     @When("the customer places an order")
@@ -68,7 +67,7 @@ public class HomepageSteps {
                 .load()
                 .navigateToCartPage();
 
-        Assert.assertTrue("Product " + prod.getName() + " was not shown as added to the cart.", new CartPage().productIsInCart(prod));
+        Assert.assertTrue(String.format("Product %s was not shown as added to the cart.", prod.getName()), new CartPage().productIsInCart(prod));
     }
 
     @Then("the total order sums to {int} euro")

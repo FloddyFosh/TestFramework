@@ -35,7 +35,7 @@ public class WiremockSteps {
     }
 
     @When("you ask Jochem about the weather for {string}")
-    public void youAskJochemAboutTheWeatherForToday(String day) {
+    public void youAskJochemAboutTheWeatherFor(String day) {
         ApiHelper
                 .askJochemWeather(day);
     }

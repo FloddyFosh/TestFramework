@@ -13,12 +13,8 @@ public class ProductPage {
         return this;
     }
 
-    public ProductPage clickAddToCart() {
+    public ProductPage addProductsToCart() {
         SeleniumHelper.click(addToCartButton);
-        return this;
-    }
-
-    public ProductPage clickOKAlert() {
         SeleniumHelper.acceptAlert();
         return this;
     }
